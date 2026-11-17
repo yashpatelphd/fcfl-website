@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Futuristic Cyber Forensics Lab (FCFL) | NFSU Gandhinagar</title>
+  <meta name="description" content="Futuristic Cyber Forensics Lab (FCFL), National Forensic Sciences University, Gandhinagar. Security and forensics research in robotics, the metaverse, physical AI, cyber-physical systems, IoT, memory and malware, storage, vehicles and drones. Funded under ISEA Phase-III, MeitY, Government of India.">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+  <!-- Fonts: Exo 2 (headings, matches the logo) + Source Serif 4 (reading text).
+       Without internet the page falls back to system fonts automatically. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Icon sprite: every icon on the page is drawn from here with <use href="#i-name"> -->
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-robot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><circle cx="9.5" cy="13" r="1.2"/><circle cx="14.5" cy="13" r="1.2"/><path d="M10 16.3h4M12 8V5.2M3 12v3M21 12v3"/><circle cx="12" cy="4.2" r="1"/></symbol>
+  <symbol id="i-vr" viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-3.5l-2-2.5h-3l-2 2.5H5a2 2 0 0 1-2-2z"/><circle cx="8" cy="12" r="1.7"/><circle cx="16" cy="12" r="1.7"/></symbol>
+  <symbol id="i-arm" viewBox="0 0 24 24"><path d="M3 21h10M8 21v-3.5"/><circle cx="8" cy="16" r="1.6"/><path d="M9 14.7l4-5.4"/><circle cx="14" cy="8" r="1.6"/><path d="M15.5 8.6l3.5 1.6M19 10.2l2-1.7M19 10.2l1.4 2.4"/></symbol>
+  <symbol id="i-cps" viewBox="0 0 24 24"><path d="M3 21V11l5 3v-3l5 3V5h4l1 5h3v11z"/><path d="M7 17.5h2M11.5 17.5h2M16 17.5h2"/></symbol>
+  <symbol id="i-iot" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5v9.5H4z"/><path d="M8.8 15.2a4.5 4.5 0 0 1 6.4 0M10.6 17.4a1.9 1.9 0 0 1 2.8 0"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12.5 15H17"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+  <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M8 8l1.5 1.5M16 8l-1.5 1.5M8 16l1.5-1.5M16 16l-1.5-1.5"/></symbol>
+  <symbol id="i-disk" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".8"/><path d="M17.5 8h.01"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 8.5L12 4l9.5 4.5L12 13z"/><path d="M6.5 10.7V15c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-4.3M21.5 8.5V14"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 10v4h3l6 4V6l-6 4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M12 16v4M8 20h8M7 12.5l3-3 2 2 4-4"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2.5 4L17 12H5"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c.8-3.5 3.2-5 6-5s5.2 1.5 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.6c2.3.2 4 1.5 4.5 4.4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+  <symbol id="s-linkedin" viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92zM20.44 13.4c0-3.08-1.64-4.9-4.3-4.9-1.6 0-2.62.8-3.06 1.55V8.5H9.7V20h3.38v-6c0-1.6.6-2.66 2-2.66 1.36 0 1.98.96 1.98 2.66v6h3.38z"/></symbol>
+  <symbol id="s-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+  <symbol id="s-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.3 5 12 5 12 5s-6.3 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.7 19 12 19 12 19s6.3 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></symbol>
+  <symbol id="s-x" viewBox="0 0 24 24"><path d="M18.9 2.2h3.4l-7.4 8.4L23.6 22h-6.8l-5.3-6.9L5.4 22H2l7.9-9L1.5 2.2h7l4.8 6.3zm-1.2 17.8h1.9L7.4 4.1h-2z"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- =====================================================================
+     HEADER
+     Menu links point to the section ids below (#about, #research ...).
+     ===================================================================== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <!-- Lab logo for light backgrounds (navy and gold text) -->
+    <a class="logo" href="#home">
+      <img class="logo-img" src="assets/img/fcfl-logo.png" alt="Futuristic Cyber Forensics Lab, National Forensic Sciences University, home" width="233" height="84">
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#activities">Activities</a></li>
+      </ul>
+      <a class="btn btn-outline nav-contact" href="#contact">Contact us</a>
+    </nav>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="menu-bars" aria-hidden="true"></span>
+      <span class="sr-only">Open menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================================================================
+       HOME / HERO
+       =================================================================== -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <canvas class="dotwave hero-wave" data-wave="hero" aria-hidden="true"></canvas>
+
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="hero-affil">National Forensic Sciences University, Gandhinagar</p>
+        <h1 id="hero-title">Security and forensics for emerging technology</h1>
+        <p class="hero-lede">
+          The Futuristic Cyber Forensics Lab (FCFL) researches how to secure
+          robots, metaverse platforms, physical AI, cyber-physical systems and
+          IoT devices, and how to recover and analyse evidence from them after
+          an attack or misuse. We also train the investigators who rely on
+          these methods.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#research">Explore our research</a>
+          <a class="btn btn-ghost" href="#publications">Read our publications</a>
+        </div>
+
+        <!-- Host institution and funding logos (files in assets/img/) -->
+        <div class="hero-partners">
+          <div class="hp-group">
+            <p class="hp-label">Hosted at</p>
+            <ul>
+              <li><a href="https://www.mha.gov.in/" target="_blank" rel="noopener"><img class="hp-logo" src="assets/img/logo-mha.png" alt="Ministry of Home Affairs, Government of India" width="132" height="52"></a></li>
+              <li><a href="https://www.nfsu.ac.in/" target="_blank" rel="noopener"><img class="hp-logo" src="assets/img/logo-nfsu.png" alt="National Forensic Sciences University, an Institution of National Importance" width="154" height="52"></a></li>
+            </ul>
+          </div>
+          <div class="hp-group">
+            <p class="hp-label">Funded by</p>
+            <ul>
+              <li><a href="https://www.meity.gov.in/" target="_blank" rel="noopener"><img class="hp-logo" src="assets/img/logo-meity.png" alt="Ministry of Electronics and Information Technology, Government of India" width="158" height="52"></a></li>
+              <li><a href="https://isea.gov.in/" target="_blank" rel="noopener"><img class="hp-logo" src="assets/img/logo-isea.png" alt="Information Security Education and Awareness (ISEA)" width="52" height="52"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest items: keep three, newest first -->
+      <aside class="latest" aria-labelledby="latest-title">
+        <h2 id="latest-title">Latest from the lab</h2>
+        <ol>
+          <li>
+            <time datetime="2026-10-21">21 Oct 2026</time>
+            <a href="#publications">[Paper on robotic forensics accepted at a peer-reviewed venue]</a>
+            <span>Publication</span>
+          </li>
+          <li>
+            <time datetime="2026-10-02">2 Oct 2026</time>
+            <a href="#activities">[Cyber hygiene week: 1,200 students across 8 schools in Gandhinagar]</a>
+            <span>Awareness</span>
+          </li>
+          <li>
+            <time datetime="2026-09-14">14 Sep 2026</time>
+            <a href="#activities">[24-hour digital forensics CTF for students]</a>
+            <span>Hackathon</span>
+          </li>
+        </ol>
+        <a class="latest-more" href="#activities">All activities</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ABOUT
+       The message card pairs Swami Vivekananda's call with a short note
+       from the lab head, Dr. Parag Rughani.
+       =================================================================== -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-main">
+          <h2 class="section-title" id="about-title">About the lab</h2>
+          <p class="lead">
+            FCFL, at the School of Cyber Security and Digital Forensics (SCSDF),
+            National Forensic Sciences University, studies the security and forensics of technologies that are only
+            now entering everyday life: robots, the metaverse, physical AI,
+            cyber-physical systems and connected devices. We turn what we learn
+            into methods, tools and training that investigators can rely on.
+          </p>
+          <div class="vm">
+            <div class="vm-item">
+              <h3>Vision</h3>
+              <p>A national reference centre for the security and forensics of emerging technologies.</p>
+            </div>
+            <div class="vm-item">
+              <h3>Mission</h3>
+              <ul class="ticks">
+                <li>Research and validate court-ready methods and open tools.</li>
+                <li>Train students, faculty and officers under ISEA Phase-III.</li>
+                <li>Build cyber hygiene awareness among citizens.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-side">
+        <figure class="message">
+          <blockquote class="message-quote">
+            <p>&ldquo;Arise, awake, and stop not till the goal is reached.&rdquo;</p>
+          </blockquote>
+          <figcaption class="message-source">Swami Vivekananda</figcaption>
+          <div class="message-pi">
+            <p>In that spirit, FCFL keeps pace with every new technology until it can be secured and its evidence trusted. We invite students and investigators to pursue this goal with us.</p>
+            <p class="message-by">Dr. Parag Rughani, Principal Investigator</p>
+          </div>
+        </figure>
+
+        <dl class="facts">
+          <div><dt>Institution</dt><dd>NFSU, Gandhinagar</dd></div>
+          <div><dt>School</dt><dd>School of Cyber Security and Digital Forensics (SCSDF)</dd></div>
+          <div><dt>Funding</dt><dd>ISEA Phase-III, MeitY</dd></div>
+          <div><dt>Established</dt><dd>2024</dd></div>
+        </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       RESEARCH AREAS (tabs)
+       Eight focus areas, one tab each. Each tab = one
+       <button role="tab"> + one <div role="tabpanel">. Keep the ids paired:
+       tab "rt-rob" controls panel "rp-rob".
+       =================================================================== -->
+  <section class="section section-tint" id="research" aria-labelledby="research-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title" id="research-title">Research areas</h2>
+        <p>Eight focus areas, grouped by technology. For each emerging technology we study both sides: how to secure it, and how to investigate it after an attack or misuse.</p>
+      </header>
+
+      <div class="rx">
+        <div class="rx-tabs" role="tablist" aria-label="Research areas" aria-orientation="vertical">
+          <button role="tab" id="rt-rob" aria-controls="rp-rob" aria-selected="true"><svg aria-hidden="true"><use href="#i-robot"/></svg>Robotics security and forensics</button>
+          <button role="tab" id="rt-meta" aria-controls="rp-meta" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-vr"/></svg>Metaverse security and forensics</button>
+          <button role="tab" id="rt-pai" aria-controls="rp-pai" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-arm"/></svg>Physical AI security and forensics</button>
+          <button role="tab" id="rt-cps" aria-controls="rp-cps" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-cps"/></svg>Cyber-physical security and forensics</button>
+          <button role="tab" id="rt-iot" aria-controls="rp-iot" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-iot"/></svg>IoT security and forensics</button>
+          <button role="tab" id="rt-mem" aria-controls="rp-mem" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-chip"/></svg>Memory forensics and malware analysis</button>
+          <button role="tab" id="rt-sto" aria-controls="rp-sto" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-disk"/></svg>Storage and file-system forensics</button>
+          <button role="tab" id="rt-uav" aria-controls="rp-uav" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-drone"/></svg>Vehicle and drone forensics</button>
+        </div>
+
+        <div class="rx-panels">
+          <div class="rx-panel" role="tabpanel" id="rp-rob" aria-labelledby="rt-rob" tabindex="0">
+            <h3>Robotics security and forensics</h3>
+            <p>Defence, medical, industrial and service robots combine software, sensors and physical motion. A compromised robot can cause real harm, and its logs may be the only record of what happened.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Security</h4>
+                <ul class="ticks">
+                  <li>Attacks on robot operating systems (ROS&nbsp;2) and their messaging</li>
+                  <li>Sensor spoofing and manipulation of navigation</li>
+                  <li>Secure updates and access control for robot fleets</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Forensics</h4>
+                <ul class="ticks">
+                  <li>Recovering mission logs, sensor data and command history</li>
+                  <li>Reconstructing a robot's actions before an incident</li>
+                  <li>Attributing malicious commands to an operator or attacker</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>ROS 2 security</li><li>Sensor data analysis</li><li>Log reconstruction</li><li>Robot testbeds</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-meta" aria-labelledby="rt-meta" tabindex="0" hidden>
+            <h3>Metaverse security and forensics</h3>
+            <p>Virtual worlds and XR headsets bring new forms of identity, property and harassment, and new places where evidence lives.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Security</h4>
+                <ul class="ticks">
+                  <li>Avatar identity theft and impersonation</li>
+                  <li>Privacy of motion, eye-tracking and biometric data</li>
+                  <li>Fraud involving virtual assets and in-world payments</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Forensics</h4>
+                <ul class="ticks">
+                  <li>Artefact recovery from VR/AR headsets and companion apps</li>
+                  <li>Reconstructing user sessions and interactions in virtual spaces</li>
+                  <li>Evidence of harassment and abuse on immersive platforms</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>XR device forensics</li><li>Avatar authentication</li><li>Virtual-asset tracing</li><li>Platform log analysis</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-pai" aria-labelledby="rt-pai" tabindex="0" hidden>
+            <h3>Physical AI security and forensics</h3>
+            <p>Physical AI puts learning models inside machines that sense and act in the real world, from autonomous robots to smart manufacturing. Their decisions must be protected, and explainable after the fact.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Security</h4>
+                <ul class="ticks">
+                  <li>Adversarial attacks on perception (vision, lidar, audio)</li>
+                  <li>Poisoning and tampering of on-device models</li>
+                  <li>Secure model deployment at the edge</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Forensics</h4>
+                <ul class="ticks">
+                  <li>Recovering the model version, inputs and decision behind an incident</li>
+                  <li>Detecting tampered or substituted models</li>
+                  <li>Explaining an AI-driven action to an investigator or court</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>Adversarial ML</li><li>Model forensics</li><li>Edge AI</li><li>Explainability</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-cps" aria-labelledby="rt-cps" tabindex="0" hidden>
+            <h3>Cyber-physical security and forensics</h3>
+            <p>3D printers, smart displays, smart interactive displays and digital signage connect software to physical output in offices, classrooms and public spaces. They store designs, sessions and content that matter in an investigation.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Security</h4>
+                <ul class="ticks">
+                  <li>Malicious print jobs and firmware tampering in 3D printers</li>
+                  <li>Hijacking of smart and interactive displays</li>
+                  <li>Unauthorised content pushed to digital signage networks</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Forensics</h4>
+                <ul class="ticks">
+                  <li>Recovering print history, G-code and design files from 3D printers</li>
+                  <li>Extracting user, session and content logs from smart displays</li>
+                  <li>Tracing who published content to a signage network, and when</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>3D printer forensics</li><li>Firmware analysis</li><li>Display and signage logs</li><li>Content management systems</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-iot" aria-labelledby="rt-iot" tabindex="0" hidden>
+            <h3>IoT security and forensics</h3>
+            <p>Smart homes, wearables and connected sensors keep detailed records of people's lives, often on devices with little built-in security.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Security</h4>
+                <ul class="ticks">
+                  <li>Vulnerabilities in firmware and companion apps</li>
+                  <li>Securing device-to-cloud communication</li>
+                  <li>Lightweight authentication for constrained devices</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Forensics</h4>
+                <ul class="ticks">
+                  <li>Extracting data from devices, hubs and cloud accounts</li>
+                  <li>Correlating timelines across several devices</li>
+                  <li>Recovering evidence without altering the device</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>Firmware analysis</li><li>Device extraction</li><li>Cloud artefacts</li><li>Timeline correlation</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-mem" aria-labelledby="rt-mem" tabindex="0" hidden>
+            <h3>Memory forensics and malware analysis</h3>
+            <p>Many modern attacks never touch the disk. We analyse volatile memory and malicious code to find what ran, who controlled it and what it took.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Memory forensics</h4>
+                <ul class="ticks">
+                  <li>Acquiring memory from live and virtualised systems</li>
+                  <li>Detecting fileless malware and code injection</li>
+                  <li>Recovering keys and artefacts of encrypted tools</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Malware analysis</h4>
+                <ul class="ticks">
+                  <li>Static and dynamic analysis in isolated sandboxes</li>
+                  <li>Family classification and attribution</li>
+                  <li>Indicators of compromise for incident response</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>Memory acquisition</li><li>Reverse engineering</li><li>Sandboxing</li><li>Threat intelligence</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-sto" aria-labelledby="rt-sto" tabindex="0" hidden>
+            <h3>Storage and file-system forensics</h3>
+            <p>Storage technology keeps changing, and every change affects what investigators can recover.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Storage media</h4>
+                <ul class="ticks">
+                  <li>Imaging and hashing HDDs, SSDs and flash media</li>
+                  <li>Effects of TRIM and wear levelling on recovery</li>
+                  <li>Encrypted volumes and self-encrypting drives</li>
+                </ul>
+              </div>
+              <div>
+                <h4>File systems</h4>
+                <ul class="ticks">
+                  <li>Artefacts left by modern file systems</li>
+                  <li>Carving fragmented and partly overwritten files</li>
+                  <li>Reconstructing user activity timelines</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>Forensic imaging</li><li>File carving</li><li>File-system internals</li><li>Write blocking</li></ul>
+          </div>
+
+          <div class="rx-panel" role="tabpanel" id="rp-uav" aria-labelledby="rt-uav" tabindex="0" hidden>
+            <h3>Vehicle and drone forensics</h3>
+            <p>Connected vehicles and drones record location, movement and user data that can decide accident, smuggling and security cases.</p>
+            <div class="rx-split">
+              <div>
+                <h4>Vehicles</h4>
+                <ul class="ticks">
+                  <li>Infotainment and telematics extraction</li>
+                  <li>Linking a vehicle to paired phones and users</li>
+                  <li>Event data around collisions</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Drones</h4>
+                <ul class="ticks">
+                  <li>Flight-log and telemetry recovery</li>
+                  <li>Reconstructing flight paths from partial logs</li>
+                  <li>Identifying the operator and controller</li>
+                </ul>
+              </div>
+            </div>
+            <h4>Methods</h4>
+            <ul class="tags"><li>Telematics</li><li>Flight-log analysis</li><li>Chip-off</li><li>GNSS data</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PROJECTS
+       One <li class="project"> per project, newest first.
+       =================================================================== -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <p>Sponsored research and capacity-building projects carried out at FCFL.</p>
+      </header>
+
+      <ol class="projects" id="project-list">
+        <li class="project">
+          <div class="project-meta">
+            <span class="status status-ongoing">Ongoing</span>
+            <span class="project-scheme">SPARC IV(A)</span>
+            <span class="project-years">Since 2025</span>
+          </div>
+          <div class="project-body">
+            <h3>From Data to Evidence: A Digital Forensic Readiness Framework for Deep Artefact Discovery</h3>
+            <p class="project-sponsor">Scheme for Promotion of Academic and Research Collaboration (SPARC), Phase 4, Ministry of Education, Government of India</p>
+            <dl class="project-facts">
+                <div><dt>Principal Investigator</dt><dd>Dr. Parag Rughani</dd></div>
+                <div><dt>Duration</dt><dd>2 years</dd></div>
+                <div><dt>Sanctioned</dt><dd>Approx. &#8377;9 million</dd></div>
+                <div><dt>Collaborating institutions</dt><dd>The University of Queensland, Australia; IIT Kharagpur, India</dd></div>
+            </dl>
+          </div>
+        </li>
+        <li class="project">
+          <div class="project-meta">
+            <span class="status status-ongoing">Ongoing</span>
+            <span class="project-scheme">ISEA Phase-III</span>
+            <span class="project-years">Since 2024</span>
+          </div>
+          <div class="project-body">
+            <h3>Information Security Education and Awareness, Phase III (ISEA3)</h3>
+            <p class="project-sponsor">Ministry of Electronics and Information Technology (MeitY), Government of India</p>
+            <dl class="project-facts">
+                <div><dt>Principal Investigator</dt><dd>Dr. Parag Rughani</dd></div>
+                <div><dt>Duration</dt><dd>5 years</dd></div>
+                <div><dt>Sanctioned</dt><dd>Approx. &#8377;43 million</dd></div>
+                <div><dt>Role of NFSU</dt><dd>Lead Institution for Cyber Forensics; Dr. Rughani is Chief Investigator (CI)</dd></div>
+            </dl>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TEAM
+       Current members use the same portrait card: <li class="tport-card">
+       with avatar, role tag, name, detail, research thrust and links.
+       Alumni are rows in the table, most recent completion first (seniors at the bottom)
+       (role tags: role-phd, role-postdoc, role-ra).
+       To use a photo, replace <span class="avatar">AB</span> with
+       <img class="avatar" src="assets/img/team/name.jpg" alt="">
+       =================================================================== -->
+  <section class="section section-tint" id="team" aria-labelledby="team-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title" id="team-title">Team</h2>
+        <p>Faculty, researchers and scholars of the lab, and the alumni who trained here.</p>
+      </header>
+
+      <!-- Current members: one portrait card each, same format for everyone.
+           PhD scholars: replace href="#" with their Google Scholar and LinkedIn URLs. -->
+      <div class="team-group">
+        <h3>Current members</h3>
+        <ul class="tport">
+          <li class="tport-card tport-lead">
+            <span class="avatar" aria-hidden="true">PR</span>
+            <span class="role-tag role-pi">Principal Investigator</span>
+            <h4>Dr. Parag Rughani</h4>
+            <p class="tport-detail">Professor of Digital Forensics<br>NFSU, Gandhinagar</p>
+            <div class="tport-thrust"><span>Research thrust</span><ul class="thrust-tags"><li>Digital forensics</li><li>Malware analysis</li><li>Artificial intelligence</li><li>Cyber security</li></ul></div>
+            <ul class="tport-links"><li><a href="https://sites.google.com/view/paragrughani" target="_blank" rel="noopener">Personal website</a></li><li><a href="https://scholar.google.com/citations?user=mM8fsmsAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a></li><li><a href="https://www.nfsu.ac.in/Faculty/profile/168" target="_blank" rel="noopener">NFSU profile</a></li></ul>
+          </li>
+          <li class="tport-card">
+            <span class="avatar" aria-hidden="true">YP</span>
+            <span class="role-tag role-postdoc">Postdoctoral Researcher</span>
+            <h4>Dr. Yash Patel</h4>
+            <p class="tport-detail">Lab In-charge<br>Since Jan 2026</p>
+            <div class="tport-thrust"><span>Research thrust</span><ul class="thrust-tags"><li>Robotic security</li><li>Robotic forensics</li><li>Cyber-physical security &amp; forensics</li><li title="Emerging technologies security &amp; forensics">Emerging tech security &amp; forensics</li></ul></div>
+            <ul class="tport-links"><li><a href="https://yashpatel.phd" target="_blank" rel="noopener">Personal website</a></li><li><a href="https://scholar.google.com/citations?user=_BDWLToAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a></li><li><a href="https://www.linkedin.com/in/yash-patel-phd/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+          </li>
+          <li class="tport-card">
+            <span class="avatar" aria-hidden="true">SR</span>
+            <span class="role-tag role-phd">PhD Scholar</span>
+            <h4>Santoshi Rudrakar</h4>
+            <p class="tport-detail">Since Dec 2020</p>
+            <div class="tport-thrust"><span>Research thrust</span><ul class="thrust-tags"><li>Internet of Things forensics</li><li>IoT agriculture</li></ul></div>
+            <ul class="tport-links"><li><a href="#">Google Scholar</a></li><li><a href="#">LinkedIn</a></li></ul>
+          </li>
+          <li class="tport-card">
+            <span class="avatar" aria-hidden="true">DM</span>
+            <span class="role-tag role-phd">PhD Scholar</span>
+            <h4>David Mugisha</h4>
+            <p class="tport-detail">Since Sep 2024</p>
+            <div class="tport-thrust"><span>Research thrust</span><ul class="thrust-tags"><li>Cyber security</li><li>Malware analysis</li></ul></div>
+            <ul class="tport-links"><li><a href="#">Google Scholar</a></li><li><a href="#">LinkedIn</a></li></ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="team-group">
+        <h3>Alumni</h3>
+        <div class="table-wrap">
+          <table class="alumni-table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Research contribution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Name"><strong>Dr. Gunikhan Sonowal</strong></td>
+                <td data-label="Position"><span class="role-tag role-postdoc">Postdoctoral Researcher</span></td>
+                <td data-label="Duration">Dec 2025 – Oct 2026</td>
+                <td data-label="Research contribution">Memory forensics</td>
+              </tr>
+              <tr>
+                <td data-label="Name"><strong>Mr. Himanshu Mishra</strong></td>
+                <td data-label="Position"><span class="role-tag role-ra">Research Assistant</span></td>
+                <td data-label="Duration">Oct 2025 – Sep 2026</td>
+                <td data-label="Research contribution">Cyber forensics</td>
+              </tr>
+              <tr>
+                <td data-label="Name"><strong>Dr. Yash Patel</strong></td>
+                <td data-label="Position"><span class="role-tag role-phd">PhD Scholar</span></td>
+                <td data-label="Duration">Mar 2021 – Dec 2025</td>
+                <td data-label="Research contribution"><a class="thesis" href="https://shodhganga.inflibnet.ac.in/handle/10603/700212" target="_blank" rel="noopener">Critical analysis of security and investigation of robots</a></td>
+              </tr>
+              <tr>
+                <td data-label="Name"><strong>Dr. Gaurav Gogia</strong></td>
+                <td data-label="Position"><span class="role-tag role-phd">PhD Scholar</span></td>
+                <td data-label="Duration">Mar 2021 – Aug 2025</td>
+                <td data-label="Research contribution"><a class="thesis" href="https://shodhganga.inflibnet.ac.in/handle/10603/657440" target="_blank" rel="noopener">Framework for Digital Evidence Storage Optimisation with Intelligent Triage Analysis</a></td>
+              </tr>
+              <tr>
+                <td data-label="Name"><strong>Dr. Ch. A. S. Murty</strong></td>
+                <td data-label="Position"><span class="role-tag role-phd">PhD Scholar</span></td>
+                <td data-label="Duration">Oct 2018 – Oct 2023</td>
+                <td data-label="Research contribution"><a class="thesis" href="https://shodhganga.inflibnet.ac.in/handle/10603/599541" target="_blank" rel="noopener">Developing an artificial intelligence based text classification framework for investigation of cybercrimes committed using darkweb</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PUBLICATIONS
+       Each entry: data-type = journal | conference | chapter | patent
+                   data-year = the year (must match its group)
+       Lab members' names go in <b>...</b>.
+       The BibTeX block is optional; delete it and its button if not needed.
+       =================================================================== -->
+  <section class="section" id="publications" aria-labelledby="pubs-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title" id="pubs-title">Publications</h2>
+        <p>Papers, book chapters and patents from the lab. Lab members are in bold.</p>
+      </header>
+
+      <div class="pub-tools">
+        <label class="search">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+          <span class="sr-only">Search publications</span>
+          <input type="search" id="pub-search" placeholder="Search by title, author or venue" autocomplete="off">
+        </label>
+        <div class="chips" role="group" aria-label="Filter by type" id="pub-types">
+          <button type="button" class="chip" data-type="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-type="journal" aria-pressed="false">Journal</button>
+          <button type="button" class="chip" data-type="conference" aria-pressed="false">Conference</button>
+          <button type="button" class="chip" data-type="chapter" aria-pressed="false">Book chapter</button>
+          <button type="button" class="chip" data-type="patent" aria-pressed="false">Patent</button>
+        </div>
+        <p class="pub-count" id="pub-count" aria-live="polite"></p>
+      </div>
+
+      <div class="pub-list" id="pub-list">
+        <section class="pub-year" aria-label="2026">
+          <h3>2026</h3>
+          <ol>
+            <li class="pub" data-type="journal">
+              <span class="pub-kind">Journal</span>
+              <p class="cite"><b>[A. Author]</b>, [B. Author] and <b>[C. Author]</b>, “[Title of the journal article],” <i>[Journal Name]</i>, vol. [x], no. [y], pp. [1–15], 2026.</p>
+              <p class="pub-actions">
+                <a href="#"><svg aria-hidden="true"><use href="#i-link"/></svg>DOI</a>
+                <a href="#"><svg aria-hidden="true"><use href="#i-doc"/></svg>PDF</a>
+                <button type="button" class="bib-toggle" aria-expanded="false">BibTeX</button>
+              </p>
+              <div class="bib" hidden>
+<pre>@article{author2026title,
+  author  = {Author, A. and Author, B. and Author, C.},
+  title   = {Title of the journal article},
+  journal = {Journal Name},
+  volume  = {x},
+  number  = {y},
+  pages   = {1--15},
+  year    = {2026}
+}</pre>
+                <button type="button" class="bib-copy"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
+              </div>
+            </li>
+            <li class="pub" data-type="conference">
+              <span class="pub-kind">Conference</span>
+              <p class="cite"><b>[A. Author]</b> and [B. Author], “[Title of the conference paper],” in <i>Proc. [Conference Name]</i>, [City], [Country], 2026, pp. [100–110].</p>
+              <p class="pub-actions">
+                <a href="#"><svg aria-hidden="true"><use href="#i-link"/></svg>DOI</a>
+                <button type="button" class="bib-toggle" aria-expanded="false">BibTeX</button>
+              </p>
+              <div class="bib" hidden>
+<pre>@inproceedings{author2026conf,
+  author    = {Author, A. and Author, B.},
+  title     = {Title of the conference paper},
+  booktitle = {Proc. Conference Name},
+  pages     = {100--110},
+  year      = {2026}
+}</pre>
+                <button type="button" class="bib-copy"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="pub-year" aria-label="2025">
+          <h3>2025</h3>
+          <ol>
+            <li class="pub" data-type="journal">
+              <span class="pub-kind">Journal</span>
+              <p class="cite">[D. Author], <b>[A. Author]</b> and <b>[E. Author]</b>, “[Title of the journal article],” <i>[Journal Name]</i>, vol. [x], art. [no.], 2025.</p>
+              <p class="pub-actions">
+                <a href="#"><svg aria-hidden="true"><use href="#i-link"/></svg>DOI</a>
+                <a href="#"><svg aria-hidden="true"><use href="#i-doc"/></svg>PDF</a>
+              </p>
+            </li>
+            <li class="pub" data-type="chapter">
+              <span class="pub-kind">Book chapter</span>
+              <p class="cite"><b>[A. Author]</b>, “[Title of the chapter],” in <i>[Book Title]</i>, [Editor(s)], Ed. [City]: [Publisher], 2025, pp. [45–68].</p>
+              <p class="pub-actions">
+                <a href="#"><svg aria-hidden="true"><use href="#i-link"/></svg>DOI</a>
+              </p>
+            </li>
+            <li class="pub" data-type="patent">
+              <span class="pub-kind">Patent</span>
+              <p class="cite"><b>[A. Inventor]</b> and <b>[B. Inventor]</b>, “[Title of the invention],” Indian Patent Application [No. 2025XXXXXXXX], filed [date] 2025.</p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="pub-year" aria-label="2024">
+          <h3>2024</h3>
+          <ol>
+            <li class="pub" data-type="conference">
+              <span class="pub-kind">Conference</span>
+              <p class="cite">[F. Author] and <b>[A. Author]</b>, “[Title of the conference paper],” in <i>Proc. [Conference Name]</i>, 2024, pp. [1–8].</p>
+              <p class="pub-actions">
+                <a href="#"><svg aria-hidden="true"><use href="#i-link"/></svg>DOI</a>
+              </p>
+            </li>
+          </ol>
+        </section>
+      </div>
+
+      <p class="empty" id="pub-empty" hidden>No publications match your search. Clear the search box or choose another type.</p>
+      <p class="more-link"><a href="#">Full list on Google Scholar</a></p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FACILITIES
+       One <li class="facility"> per facility: icon, name, one line.
+       =================================================================== -->
+  <section class="section section-tint section-facilities" id="facilities" aria-labelledby="facilities-title">
+    <canvas class="dotwave facilities-wave" data-wave="soft" aria-hidden="true"></canvas>
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title" id="facilities-title">Facilities</h2>
+        <p>Laboratory infrastructure available to lab members, students and partner agencies.</p>
+      </header>
+
+      <ul class="facilities">
+        <li class="facility">
+          <svg class="facility-icon" aria-hidden="true"><use href="#i-robot"/></svg>
+          <div><h3>Robotics lab</h3><p>Robotic arms and a robotic dog for robot security testing and forensic research.</p></div>
+        </li>
+        <li class="facility">
+          <svg class="facility-icon" aria-hidden="true"><use href="#i-vr"/></svg>
+          <div><h3>AR/VR headsets</h3><p>Augmented and virtual reality headsets for metaverse security and artefact research.</p></div>
+        </li>
+        <li class="facility">
+          <svg class="facility-icon" aria-hidden="true"><use href="#i-cps"/></svg>
+          <div><h3>Cyber-physical and IoT testbeds</h3><p>3D printers, smart displays, smart interactive displays, digital signage and IoT devices.</p></div>
+        </li>
+        <li class="facility">
+          <svg class="facility-icon" aria-hidden="true"><use href="#i-drone"/></svg>
+          <div><h3>Drone and vehicle forensics</h3><p>Drones and vehicle systems for flight-log, telematics and infotainment analysis.</p></div>
+        </li>
+        <li class="facility">
+          <svg class="facility-icon" aria-hidden="true"><use href="#i-laptop"/></svg>
+          <div><h3>Apple hardware</h3><p>Mac, iPhone and iPad devices for macOS and iOS forensics research.</p></div>
+        </li>
+        <li class="facility">
+          <svg class="facility-icon" aria-hidden="true"><use href="#i-chip"/></svg>
+          <div><h3>GPU research server</h3><p>High-performance compute for physical AI, machine learning and password recovery.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ACTIVITIES
+       Each event: data-filter-value = bootcamp | hackathon | workshop | talk | awareness
+       Newest first. Only the first 3 show until "View all" is pressed
+       (change data-limit on the list to show more or fewer).
+       =================================================================== -->
+  <section class="section" id="activities" aria-labelledby="activities-title">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title" id="activities-title">Activities</h2>
+        <p>Under ISEA Phase-III the lab runs student programmes, academic events and outreach alongside its research.</p>
+      </header>
+
+      <!-- Ordered by audience: students, then academics, then the public -->
+      <ul class="act-types">
+        <li><svg aria-hidden="true"><use href="#i-terminal"/></svg><div><h3>Student bootcamps</h3><p>Intensive hands-on bootcamps for UG and PG students under ISEA Phase-III.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-flag"/></svg><div><h3>Hackathons and CTFs</h3><p>Forensics challenges that build practical student skills.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-people"/></svg><div><h3>Internships</h3><p>Research internships for UG and PG students.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-board"/></svg><div><h3>Workshops and FDPs</h3><p>Faculty development and research methods workshops.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-mic"/></svg><div><h3>Expert talks</h3><p>Talks by investigators, researchers and industry experts.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#i-megaphone"/></svg><div><h3>Awareness drives</h3><p>Cyber hygiene sessions for schools, colleges and citizens.</p></div></li>
+      </ul>
+
+      <div class="events-head">
+        <h3>Recent and upcoming</h3>
+        <div class="chips" role="group" aria-label="Filter activities" data-filter-target="#event-list">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-filter="bootcamp" aria-pressed="false">Bootcamps</button>
+          <button type="button" class="chip" data-filter="hackathon" aria-pressed="false">Hackathons</button>
+          <button type="button" class="chip" data-filter="workshop" aria-pressed="false">Workshops</button>
+          <button type="button" class="chip" data-filter="talk" aria-pressed="false">Talks</button>
+          <button type="button" class="chip" data-filter="awareness" aria-pressed="false">Awareness</button>
+        </div>
+      </div>
+
+      <ol class="events" id="event-list" data-limit="3">
+        <li class="event" data-filter-value="workshop">
+          <time datetime="2026-12-10"><span class="ev-day">10</span><span class="ev-month">Dec 2026</span></time>
+          <div class="ev-body">
+            <span class="ev-type">Workshop</span>
+            <h4>[Faculty development programme on AI in digital forensics]</h4>
+            <p>[Venue], [duration]. [Who can attend and how to register.]</p>
+          </div>
+          <span class="ev-badge">Upcoming</span>
+        </li>
+        <li class="event" data-filter-value="awareness">
+          <time datetime="2026-10-02"><span class="ev-day">02</span><span class="ev-month">Oct 2026</span></time>
+          <div class="ev-body">
+            <span class="ev-type">Awareness</span>
+            <h4>[Cyber hygiene week in Gandhinagar schools]</h4>
+            <p>[Number] students and teachers across [number] schools.</p>
+          </div>
+        </li>
+        <li class="event" data-filter-value="hackathon">
+          <time datetime="2026-09-14"><span class="ev-day">14</span><span class="ev-month">Sep 2026</span></time>
+          <div class="ev-body">
+            <span class="ev-type">Hackathon</span>
+            <h4>[24-hour digital forensics CTF]</h4>
+            <p>[Number] teams from [number] institutions. Winners: [team names].</p>
+          </div>
+        </li>
+        <li class="event" data-filter-value="talk">
+          <time datetime="2026-08-22"><span class="ev-day">22</span><span class="ev-month">Aug 2026</span></time>
+          <div class="ev-body">
+            <span class="ev-type">Expert talk</span>
+            <h4>[Talk title] by [Speaker name, designation]</h4>
+            <p>[One line about the talk.]</p>
+          </div>
+        </li>
+        <li class="event" data-filter-value="bootcamp">
+          <time datetime="2026-07-20"><span class="ev-day">20</span><span class="ev-month">Jul 2026</span></time>
+          <div class="ev-body">
+            <span class="ev-type">Student bootcamp</span>
+            <h4>[Five-day student bootcamp on digital forensics and cyber security]</h4>
+            <p>[Number] students from [institutions]. [One line on topics covered.]</p>
+          </div>
+        </li>
+      </ol>
+      <div class="events-foot">
+        <button type="button" class="btn btn-ghost btn-sm" data-more-for="#event-list" aria-controls="event-list" aria-expanded="false" hidden>View all activities</button>
+      </div>
+      <p class="empty" hidden>No activities in this category yet.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CONTACT
+       The form opens the visitor's email app with the enquiry filled in.
+       All fields except the topic list are required.
+       =================================================================== -->
+  <section class="section section-tint" id="contact" aria-labelledby="contact-title">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <p class="contact-intro">For research collaboration, doctoral and postdoctoral enquiries, or access to laboratory facilities.</p>
+
+        <ul class="contact-list">
+          <li>
+            <svg aria-hidden="true"><use href="#i-pin"/></svg>
+            <div><h3>Address</h3><p>2nd Floor, IFS Building<br>Futuristic Cyber Forensics Lab<br>National Forensic Sciences University<br>Sector 9, Gandhinagar, Gujarat 382007, India</p></div>
+          </li>
+          <li>
+            <svg aria-hidden="true"><use href="#i-mail"/></svg>
+            <div><h3>Email</h3><p><a href="mailto:pi_isea3@nfsu.ac.in">pi_isea3@nfsu.ac.in</a></p></div>
+          </li>
+          <li>
+            <svg aria-hidden="true"><use href="#i-clock"/></svg>
+            <div><h3>Office hours</h3><p>Monday to Friday, 10:00 to 18:00</p></div>
+          </li>
+        </ul>
+
+        <div class="map">
+          <iframe title="Map of National Forensic Sciences University, Gandhinagar"
+                  src="https://www.google.com/maps?q=National+Forensic+Sciences+University,+Sector+9,+Gandhinagar&output=embed"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contact-form" data-mailto="pi_isea3@nfsu.ac.in" novalidate>
+        <h3>Send an enquiry</h3>
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-name">Full name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-org">Organisation or institution</label>
+          <input id="cf-org" name="org" type="text" autocomplete="organization" required>
+        </div>
+        <div class="field">
+          <label for="cf-topic">Nature of enquiry</label>
+          <select id="cf-topic" name="topic">
+            <option>Research collaboration proposal</option>
+            <option>Doctoral (PhD) programme enquiry</option>
+            <option>Postdoctoral position enquiry</option>
+            <option>Research internship or dissertation enquiry</option>
+            <option>Bootcamp, workshop or capacity-building programme request</option>
+            <option>Request for access to laboratory facilities</option>
+            <option>Invitation for an expert talk or academic event</option>
+            <option>Other academic or institutional enquiry</option>
+          </select>
+        </div>
+        <div class="field field-grow">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="4" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send enquiry</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- =====================================================================
+     FOOTER (follows the mockup)
+     ===================================================================== -->
+<footer class="site-footer">
+  <canvas class="dotwave footer-wave" data-wave="footer" aria-hidden="true"></canvas>
+
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <!-- Lab logo for dark backgrounds (white and gold text) -->
+      <a class="logo logo-lg" href="#home">
+        <img class="logo-img" src="assets/img/fcfl-logo-dark.png" alt="Futuristic Cyber Forensics Lab, National Forensic Sciences University, back to top" width="287" height="96">
+      </a>
+      <p>National Forensic Sciences University, Gandhinagar. Funded under the ISEA Project Phase-III, MeitY, Government of India.</p>
+
+      <ul class="footer-partners" aria-label="Host institution and funding agencies">
+        <li><img src="assets/img/logo-mha.png" alt="Ministry of Home Affairs" width="91" height="36"></li>
+        <li><img src="assets/img/logo-nfsu-crest.png" alt="National Forensic Sciences University" width="27" height="36"></li>
+        <li><img src="assets/img/logo-meity.png" alt="Ministry of Electronics and Information Technology" width="109" height="36"></li>
+        <li><img src="assets/img/logo-isea.png" alt="ISEA" width="36" height="36"></li>
+      </ul>
+    </div>
+
+    <nav class="footer-col" aria-labelledby="f-quick">
+      <h2 id="f-quick">Quick Links</h2>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-labelledby="f-res">
+      <h2 id="f-res">Resources</h2>
+      <ul>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#">Tools and datasets</a></li>
+        <li><a href="#">Downloads</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <h2>Connect</h2>
+      <ul class="social">
+        <li><a href="#" aria-label="FCFL on LinkedIn"><svg aria-hidden="true"><use href="#s-linkedin"/></svg></a></li>
+        <li><a href="#" aria-label="FCFL on GitHub"><svg aria-hidden="true"><use href="#s-github"/></svg></a></li>
+        <li><a href="#" aria-label="FCFL on YouTube"><svg aria-hidden="true"><use href="#s-youtube"/></svg></a></li>
+        <li><a href="#" aria-label="FCFL on X"><svg aria-hidden="true"><use href="#s-x"/></svg></a></li>
+      </ul>
+      <p class="footer-mail"><a href="mailto:pi_isea3@nfsu.ac.in">pi_isea3@nfsu.ac.in</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; <span id="year">2026</span> Futuristic Cyber Forensics Lab, NFSU. All rights reserved.</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
